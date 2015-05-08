@@ -7,7 +7,12 @@ import android.view.MenuItem;
 
 import com.github.polok.localify.LocalifyCallback;
 import com.github.polok.localify.LocalifyClient;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import polok.github.com.localify.demo.model.User;
 import rx.Subscriber;
+import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
 
@@ -94,6 +99,32 @@ public class MainActivity extends ActionBarActivity {
 
                     }
                 });
+
+
+        localifyClient.localify()
+                .rx()
+                .loadAssetsFile("test.json")
+                .subscribeOn(Schedulers.io())
+                .map(new Func1<String, User>() {
+                    @Override
+                    public User call(String data) {
+                        Gson gson = new GsonBuilder().create();
+                        return gson.fromJson(data, User.class);
+                    }
+                }).subscribe(new Subscriber<User>() {
+            @Override
+            public void onCompleted() {
+            }
+
+            @Override
+            public void onError(Throwable e) {
+            }
+
+            @Override
+            public void onNext(User user) {
+
+            }
+        });
     }
 
 
