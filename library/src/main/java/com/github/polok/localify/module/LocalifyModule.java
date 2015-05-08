@@ -69,6 +69,10 @@ public class LocalifyModule extends BaseModule {
 
     @Override
     public String loadAssetsFile(String fileName) {
+        if(assetManager == null) {
+            throw new IllegalStateException("First you have to init the Asset Manager");
+        }
+
         int size = 0;
         byte[] buffer = null;
         try {
@@ -88,6 +92,10 @@ public class LocalifyModule extends BaseModule {
 
     @Override
     public String loadRawFile(@RawRes int fileNameRawId) {
+        if(resources == null) {
+            throw new IllegalStateException("First you have to init the Resource");
+        }
+
         InputStream is = resources.openRawResource(fileNameRawId);
         Writer writer = new StringWriter();
         char[] buffer = new char[1024];
