@@ -134,7 +134,7 @@ localifyClient.localify()
 
 ```
 
-######Additional settings
+#####3. Additional settings
 By default asynchronous callbacks run in Android main thread. If you want this can be changed by 'withExecutor(executor)' method invoked on LocalifyCalient's builder:
 
 ```java
@@ -143,6 +143,34 @@ LocalifyClient localifyClient = new LocalifyClient.Builder()
             ...
             .build();
 
+```
+
+####4. More examples
+######Load json file and map to object
+```java
+localifyClient.localify()
+            .rx()
+            .loadAssetsFile("test.json")
+            .subscribeOn(Schedulers.io())
+            .map(new Func1<String, User>() {
+                @Override
+                public User call(String data) {
+                    Gson gson = new GsonBuilder().create();
+                    return gson.fromJson(data, User.class);
+                }
+            }).subscribe(new Subscriber<User>() {
+                @Override
+                public void onCompleted() {
+                }
+
+                @Override
+                public void onError(Throwable e) {
+                }
+
+                @Override
+                public void onNext(User user) {
+                }
+        });
 ```
 
 ####If you want to see more details, go ahead and check the demo!
