@@ -10,9 +10,6 @@ Localify is a small library which allows to load a content from files which are 
 
 ####Welcome to fork and pull request.
 
-###Screenshot
-![image](art/.gif)
-
 #####1.Integration
 
 ###### Using Gradle:
@@ -44,7 +41,7 @@ LocalifyClient localifyClient = new LocalifyClient.Builder()
 ```
 
 ######Read a file from assets or raw directory. You can do this in three different ways:
-#######1)
+######1)
 ```java
 String loadAssetsFile(String fileName);
 String loadRawFile(@RawRes int fileNameRawId);
@@ -58,7 +55,7 @@ String dataAssets = localifyClient.localify().loadAssetsFile("test.text");
 String dataRaw = localifyClient.localify().loadRawFile(R.raw.test);
 ```
 
-#######2)
+######2)
 ```java
 void loadAssetsFile(String fileName, LocalifyCallback<T> callback);
 void loadRawFile(@RawRes int fileNameRawId, LocalifyCallback<T> callback);
@@ -92,7 +89,7 @@ localifyClient.localify()
             });
 ```
 
-#######3)
+######3)
 ```java
 Observable<String> loadAssetsFile(String fileName);
 Observable<String> loadRawFile(@RawRes int fileNameRawId);
