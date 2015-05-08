@@ -134,7 +134,7 @@ localifyClient.localify()
 
 ```
 
-#####3. Additional settings
+####3. Additional settings
 By default asynchronous callbacks run in Android main thread. If you want this can be changed by 'withExecutor(executor)' method invoked on LocalifyCalient's builder:
 
 ```java
