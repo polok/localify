@@ -1,16 +1,16 @@
-#Localify
+# Localify
 
-###Version: 1.0.0
+### Version: 1.0.0
 
 [![License](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0) [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Localify-brightgreen.svg?style=flat)](http://android-arsenal.com/details/1/1791)
 
-###Description
+### Description
 
 Localify is a small library which allows to load a content from files which are stored under assets and/or raw directory. It can be useful when you have to load some init data or during tests to load mock data.
 
-####Welcome to fork and pull request.
+#### Welcome to fork and pull request.
 
-#####1.Integration
+##### 1.Integration
 
 ###### Using Gradle:
 
@@ -30,9 +30,9 @@ dependencies {
 </dependency>
 ```
 
-#####2.Usage
+##### 2.Usage
 
-######First you have to init a LocalifyClient (the basic  version) where you have to set the AssetManager and/or the Resources
+###### First you have to init a LocalifyClient (the basic  version) where you have to set the AssetManager and/or the Resources
 ```java
 LocalifyClient localifyClient = new LocalifyClient.Builder()
                 .withAssetManager(getAssets()) //If you want to read from raw directory
@@ -40,8 +40,8 @@ LocalifyClient localifyClient = new LocalifyClient.Builder()
                 .build();
 ```
 
-######Read a file from assets or raw directory. You can do this in three different ways:
-######1)
+###### Read a file from assets or raw directory. You can do this in three different ways:
+###### 1)
 ```java
 String loadAssetsFile(String fileName);
 String loadRawFile(@RawRes int fileNameRawId);
@@ -55,7 +55,7 @@ String dataAssets = localifyClient.localify().loadAssetsFile("test.text");
 String dataRaw = localifyClient.localify().loadRawFile(R.raw.test);
 ```
 
-######2)
+###### 2)
 ```java
 void loadAssetsFile(String fileName, LocalifyCallback<T> callback);
 void loadRawFile(@RawRes int fileNameRawId, LocalifyCallback<T> callback);
@@ -89,7 +89,7 @@ localifyClient.localify()
             });
 ```
 
-######3)
+###### 3)
 ```java
 Observable<String> loadAssetsFile(String fileName);
 Observable<String> loadRawFile(@RawRes int fileNameRawId);
@@ -134,7 +134,8 @@ localifyClient.localify()
 
 ```
 
-####3. Additional settings
+#### 3. Additional settings
+
 By default asynchronous callbacks run in Android main thread. If you want this can be changed by 'withExecutor(executor)' method invoked on LocalifyCalient's builder:
 
 ```java
@@ -145,8 +146,8 @@ LocalifyClient localifyClient = new LocalifyClient.Builder()
 
 ```
 
-####4. More examples
-######Load json file and map to object
+#### 4. More examples
+###### Load json file and map to object
 ```java
 localifyClient.localify()
             .rx()
@@ -173,7 +174,7 @@ localifyClient.localify()
         });
 ```
 
-####If you want to see more details, go ahead and check the demo!
+#### If you want to see more details, go ahead and check the demo!
 
 License
 --------
